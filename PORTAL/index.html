@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">	
+	<link rel="stylesheet" href="css/style.css">
+	<script type="text/javascript" src="js/controle.js"></script>
+	<script type="text/javascript" src="js/aluno.js"></script>
+	<script type="text/javascript" src="js/professor.js"></script>
+	
+</head>
+<body>
+	<header>
+		<h2>PORTAL ESTAGIÁRIOS</h2>
+	</header>
+	<main>
+		<div id="centro">
+			<div class="formholder">
+				<div class="randompad">
+				   <fieldset>
+					 <label name="email">Usuario</label><em id="aviso1"></em>
+					 <input id="nome" value="" />
+					 <label name="password">Password</label><em id="aviso2"></em>
+					 <input type="password" id="senha" value=""/>
+					 <input type="submit" value="Login" id="confirma" />
+				   </fieldset>
+				   <em id="aviso3"></em>
+				</div>
+			</div>
+		</div>
+	</main>
+	<footer>
+		<INPUT TYPE="button" id="atualizar" class="desaparecer" VALUE="Exit" onClick='parent.location="javascript:location.reload()"'>
+		<button id='professor' type='button'>Professor</button>
+	</footer>
+</body>
+</html>

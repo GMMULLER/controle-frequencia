@@ -1,0 +1,242 @@
+table{
+	color:white;
+	width:500px;
+  margin-left: auto;
+  margin-right: auto;
+	margin-top: 20px;
+  background-color: #1bc6a4;
+  border-radius: 10px;
+}
+table td:nth-child(2n+1){
+  width: 200px;
+}
+
+footer{
+	margin-left: auto;
+	margin-right: auto;
+	width:500px;
+}
+#atualizar{
+	margin-top:10px;
+	border-radius:10px;
+}
+
+#cadastrar,#deletar{
+  background: #1abc9c;
+  padding: 10px;
+  font-size: 20px;
+  display: block;
+  width: 100%;
+  border: none;
+  color: #fff;
+  margin-top:5px;
+}
+
+#professor{
+	margin-left:50px;
+}
+
+label{
+	margin-right:5px;
+
+}
+
+.modal-footer input{
+	width:150px;
+	margin-right:7px;
+}
+
+
+ul{
+	list-style-type:none;
+	padding-left:10px;
+}
+
+ul a{
+	color:black;
+}
+
+ul a:hover{
+	color:black;
+	text-decoration:none;
+	cursor:pointer;
+}
+
+h4{
+	margin-left:10px;
+}
+
+
+.desaparecer{
+	display: none;
+}
+
+table td:nth-child(2n){
+  width: 200px;
+}
+
+.usuario{
+  width:500px;
+  height: 25px;
+  color: yellow;
+  background-color: black;
+  border-radius: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px; 
+}
+.us1{
+  margin-left: 10px;
+  float: left;
+  width: 300px;
+}
+
+.selection{
+  float: left;
+  width: 170px;
+}
+.selection select, .selection label{
+  margin-top: -20px; 
+  height: 18px;
+}
+
+.metadado{
+	width: 450px;
+	margin-left: 100px;
+}
+
+main{
+	max-width:900px;
+}
+
+.titulo{
+	background-color: white;
+  border-radius: 100px;
+}
+
+.titulo th{
+  background-color: black;
+  border-radius: 100px;
+}
+.horasPorDia td{
+  color: yellow;
+}
+
+body {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 100px;
+  width: 900px;
+  padding: 0;
+  font-family: Sans-serif;
+  background: #2c3e50;
+}
+
+#wrap {
+  margin: 0 auto 30px;
+}
+
+header{
+	text-align: center;
+}
+	
+header h2{
+	font-size: 5em;
+	margin-bottom:50px;
+}
+
+#regbar {
+  height: 67px;
+  background: #34495e;
+}
+
+#aviso1, #aviso2, #aviso3{
+	color: red;
+	margin-left: 10px;
+}
+
+#navthing {
+  margin-left: 50px;
+}
+
+h2 {
+  padding: 20px;
+  color: #ecf0f1;
+  font-weight:bold;
+}
+
+#centro{
+	margin-left: auto;
+	margin-right: auto;
+	width:400px;
+}
+
+fieldset {
+  border: none;
+}
+
+.arrow-up {
+  width: 0;
+  height: 0;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-bottom: 15px solid #ECF0F1;
+  left: 10%;
+  position: absolute;
+  top: -10px;
+}
+
+.formholder {
+  background: #ecf0f1;
+  width: 350px;
+  border-radius: 5px;
+  padding-top: 5px;
+}
+.formholder #nome, .formholder input[type="password"]:not(.senhaPass){
+  padding: 7px 5px;
+  margin: 10px 0;
+  width: 96%;
+  display: block;
+  font-size: 18px;
+  border-radius: 5px;
+  border: none;
+  -webkit-transition: 0.3s linear;
+  -moz-transition: 0.3s linear;
+  -o-transition: 0.3s linear;
+  transition: 0.3s linear;
+}
+.formholder input[type="email"]:focus, .formholder input[type="password"]:focus {
+  outline: none;
+  box-shadow: 0 0 1px 1px #1abc9c;
+}
+.formholder input[type="submit"]{
+  background: #1abc9c;
+  padding: 10px;
+  font-size: 20px;
+  display: block;
+  width: 100%;
+  border: none;
+  color: #fff;
+  border-radius: 5px;
+}
+.formholder input[type="submit"]:hover {
+  background: #1bc6a4;
+}
+
+.randompad {
+  padding: 10px;
+}
+
+.green {
+  color: #1abc9c;
+}
+
+a:not(ul a){
+  color: #ecf0f1;
+  text-decoration: none;
+}
+a:hover:not(ul a){
+  color: #1abc9c;
+}
+
+
