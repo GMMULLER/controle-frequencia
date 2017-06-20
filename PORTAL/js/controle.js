@@ -1,158 +1,91 @@
+var senha;
+var nome;
+
+
 $(function(){
-			var senha;
-			var nome;
-			
-			$("#atualizar").addClass("desaparecer");
-			
-			$("#confirma").click(function(){
-				//Variáveis de login
-				nome = $("#nome").val().toString().toLowerCase();
-				senha  = $("#senha").val().toString();
-		
-				var ok = true;
+	//variável para ver se está na tela de login
+	var telaLogin = 1;
+	
+	//**********************************FUNÇOES PARA LOGIN******************************
+	function login(){
+		nome = $("#nome").val().toString().toLowerCase();
+		senha  = $("#senha").val().toString();
 
-				if(nome == ""){
-					$("#aviso1").text("Nome inválido");
-					ok = false;
+		var confere = true;
+
+		if(nome == ""){
+			$("#aviso1").text("Nome inválido");
+			confere = false;
+		}else{
+			$("#aviso1").text("");
+		}
+		if(senha.toString() == ""){
+			$("#aviso2").text("Senha inválida");
+			confere = false;
+		}else{
+			$("#aviso2").text("");
+		}
+
+
+		if(confere == true){
+			var req = $.get("http://botanicapp.com.br/cleyton/estagiarios/getAcess.php", {nome:nome,senha:senha}, function(result){
+				var resultadoString = parseInt(result);
+				if(resultadoString != 0){
+					telaLogin = 0;
+					novaTela(result, nome);
 				}else{
-					$("#aviso1").text("");
+					$("#aviso3").text("Usuário ou senha inválido");
+					nome = "";
+					senha = "";
 				}
-				if(senha.toString() == ""){
-					$("#aviso2").text("Senha inválida");
-					ok = false;
-				}else{
-					$("#aviso2").text("");
-				}
-		
-
-				if(ok == true){
-					$.get("http://botanicapp.com.br/cleyton/estagiarios/getAcess.php", {nome:nome,senha:senha}, function(result){
-						
-						var resultadoString = parseInt(result);
-						if(resultadoString != 0){
-							novoModal(result, nome);
-						}else{
-							$("#aviso3").text("Usuário ou senha inválido");
-						}
-					});
-				}
-					
-			});
-			
-			function novoModal(resultado, nome){
-
-				console.log(resultado);
-
-				//Verifica se é aluno ou professor
-				var gv = JSON.parse(resultado);
-
-				if (gv[0] == 1) {
-					//aluno
-					telaAluno(resultado, nome);
-				}else if (gv[0] == 2){
-					//Professor
-					telaProfessor(gv);
-				}
-
-			}
-
-			$("main").on("click", "#refresh", function(){
-				$.post("http://botanicapp.com.br/cleyton/estagiarios/getAcess.php",{nome:"'"+nome+"'",senha:"'"+senha+"'"} ,function(result){
-					var resultadoString = parseInt(result);
-					if(resultadoString != 0){
-						novoModal2(result, nome);
-					}
-				});
 			});
 
-			function novoModal2(resultado, nome){
-				var totalHoras = [];
-				var mes = $("#resposta").val();
-				//alert(mes);
-				var selection = "<label>Mês: </label><select id=\"resposta\">"+
-														"<option value=\"0\">-------</option>"+
-														"<option value=\"1\">Janeiro</option>"+
-										                "<option value=\"2\">Fevereiro</option>"+
-										                "<option value=\"3\">Março</option>"+
-										                "<option value=\"4\">Abril</option>"+  
-										                "<option value=\"5\">Maio</option>"+  
-										                "<option value=\"6\">Junho</option>"+
-										                "<option value=\"7\">Julho</option>"+  
-										                "<option value=\"8\">Agosto</option>"+
-										                "<option value=\"9\">Setembro</option>"+  
-										                "<option value=\"10\">Outubro</option>"+
-										                "<option value=\"11\">Novembro</option>"+
-										                "<option value=\"12\">Dezembro</option>"+  
-										            "</select><img src=\"refresh.png\" id=\"refresh\" width=\"22px\" height=\"22px\" >";
-				$("main").empty();
-				$("main").append("<div class=\"usuario\"><div class=\"us1\">Usuário: "+nome+"</div><div class=\"selection\">"+selection+"</div></div>");
-				$("#resposta").val(mes);
+			req.always(function(){
+				$("#gifCarregando").remove();
+				$("main").append("<img id=\"gifCarregando\" src=\"./images/gifCarregando.gif\">");		
+			});
 
-				var diaMesAnterior = 0, numMesAnterior = 0, anoAnterior = 0, idAnterior = 0, ultimoMov = 0; 
-				var gv = JSON.parse(resultado);
-				$.each(gv,function(index, obj){
-					var gv2 = JSON.parse(obj);
-					if(parseInt(gv2.numMes) == parseInt(mes) || parseInt(mes) == 0){
-						if(gv2.diaMes == diaMesAnterior && gv2.numMes == numMesAnterior && gv2.ano == anoAnterior){
-							ultimoMov = ultimoMov * -1;
-							if(ultimoMov == -1){
-								$("#"+idAnterior).append("<tr  class='saiu'><td>Saiu :</td><td>"+gv2.hora+":"+gv2.minuto+"</td></tr>");
-							}else{
-								$("#"+idAnterior).append("<tr  class='entrou'><td>Entrou :</td><td>"+gv2.hora+":"+gv2.minuto+"</td></tr>");
-							}
-						}else{
-							$("main").append("<table id=\""+(idAnterior+1)+"\"><tr class=\"titulo\"><th colspan=\"2\">"+gv2.diaMes+"/"+gv2.numMes+"/"+gv2.ano+"</th></tr><tr  class='entrou'><td>Entrou: </td><td>"+gv2.hora+":"+gv2.minuto+"</td></tr></table>");
-							ultimoMov = 1;
-							idAnterior++;
-						}
-						diaMesAnterior = gv2.diaMes; numMesAnterior = gv2.numMes; anoAnterior = gv2.ano;
-					}
-				});
-				var i = 1;
-				var j = 1;
-				for( i=1;i<=idAnterior;i++){
-					var minutosTotal = 0;
-					for(j = 2; j<=(($("#"+i+" tr").length));j=j+2){
-						
-						var horaEntrada1 = $("#"+i+" :nth-child("+j+")").html();
-						if(horaEntrada1 != null){
-							var str1 = horaEntrada1.split("<td>");
-							str2 = str1[2].replace("</td>", "");
-							
-							var array2 = str2.split(":");
-							var horaEntrada = array2[0];
-							var minutoEntrada = array2[1];
-						}
-						
-						var horaSaida1 = $("#"+i+" :nth-child("+(j+1)+")").html();
-						if(horaSaida1 != null){
-							var str3 = horaSaida1.split("<td>");
-							var str2 = str3[2].replace("</td>", "");
-							
-							var array3 = str2.split(":");
-							var horaSaida = array3[0];
-							var minutoSaida = array3[1];
-							//console.log(horaSaida+" e "+minutoSaida);
-						}
-						
-						if(horaSaida1 !=null && horaEntrada1 != null){
-							var total1 = parseInt((horaEntrada*60))+parseInt(minutoEntrada);
-							var totalNeg = parseInt((horaSaida*60))+parseInt(minutoSaida);
-							var totalNeg1 =  totalNeg - total1;
-							minutosTotal = minutosTotal + totalNeg1;
-						}
-					}
-					
-					$("#"+i).append("<tr class=\"horasPorDia\"><td>Horas trabalhadas :</td><td>"+parseInt((minutosTotal)/60)+" h e "+((minutosTotal)%60)+" min</td></tr>");
-					totalHoras[i] = minutosTotal;
-				}
-				//var horaEntrada = $("#1 :nth-child(2)").html();
-				var totalHorasEstagio = 0;
-				for (var i = totalHoras.length - 1; i > 0; i--) {
-					totalHorasEstagio = totalHorasEstagio + totalHoras[i];
-				}
-				$("main").append("<div class=\"usuario\"><div class=\"us1\">Horas Total: "+parseInt((totalHorasEstagio)/60)+"</div></div>");
+			req.fail(function(){
+				$("#gifCarregando").remove();
+			});
 
+			req.done(function(){
+				$("#gifCarregando").remove();
+			});
+
+			
+
+		}
+	}
+	
+	$("#confirma").click(function(){
+		login();
+	});
+
+	$(document).keypress(function(e){
+		if(e.wich == 13 || e.keyCode == 13){
+			if (telaLogin) {
+				login();
 			}
+		}
+  	})
+
+  	//*************************FIM FUNCOES PARA LOGIN***************************
+	
+	function novaTela(resultado, nome){
+		//Verifica se é aluno ou professor
+		var objetos = JSON.parse(resultado);
+		var gv = JSON.parse(objetos[0]);
+		$("footer").empty();
+		console.log(gv.bandeira1);
+		if (gv.bandeira1 == 1) {
+			//aluno
+			telaAluno(objetos, nome);
+		}else if (gv.bandeira1 == 2){
+			//Professor
+			telaProfessor(objetos);
+		}
+
+	}
 
 });

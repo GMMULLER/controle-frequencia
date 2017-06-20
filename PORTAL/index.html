@@ -3,10 +3,17 @@
 
 <head>
 	<meta charset="UTF-8">
+	
+	<title>Portal Estagiários</title>
+	<link rel="icon" href="./images/logoCefet.ico" type="image/gif" sizes="64x64">
+
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">	
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/aluno.css">
+	<link rel="stylesheet" href="css/professor.css">
 	<script type="text/javascript" src="js/controle.js"></script>
 	<script type="text/javascript" src="js/aluno.js"></script>
 	<script type="text/javascript" src="js/professor.js"></script>
@@ -17,24 +24,67 @@
 		<h2>PORTAL ESTAGIÁRIOS</h2>
 	</header>
 	<main>
-		<div id="centro">
-			<div class="formholder">
-				<div class="randompad">
-				   <fieldset>
-					 <label name="email">Usuario</label><em id="aviso1"></em>
-					 <input id="nome" value="" />
-					 <label name="password">Password</label><em id="aviso2"></em>
-					 <input type="password" id="senha" value=""/>
-					 <input type="submit" value="Login" id="confirma" />
-				   </fieldset>
-				   <em id="aviso3"></em>
-				</div>
+		
+		<div class="formholder">
+			<div class="randompad">
+			   <fieldset>
+				 <label name="email">Usuário</label><em id="aviso1"></em>
+				 <input id="nome" value="" autofocus="autofocus" />
+				 <label name="password">Senha</label><em id="aviso2"></em>
+				 <input type="password" id="senha" value=""/>
+				 <input type="submit" value="Login" id="confirma" />
+			   </fieldset>
+			   <em id="aviso3"></em>
+			</div>
+		</div>
+		<div class="introducao">
+			<div class="randompad">
+				<img class="mySlides" src="./images/img1.jpg" style="width:370px" height="250px">
+	  			<img class="mySlides" src="./images/img2.jpeg" style="width:370px" height="250px">
+  				<img class="mySlides" src="./images/img3.jpg" style="width:370px" height="250px">
+				
 			</div>
 		</div>
 	</main>
 	<footer>
-		<INPUT TYPE="button" id="atualizar" class="desaparecer" VALUE="Exit" onClick='parent.location="javascript:location.reload()"'>
-		<button id='professor' type='button'>Professor</button>
+		<a data-toggle="modal" data-target="#myModa">Saiba mais sobre!</a>
+		<div class="modal fade" id="myModa" role="dialog">
+			<div class="modal-dialog">	
+				<div class="modal-content">
+					<div class="modal-header">
+					  <button type="button" class="close" data-dismiss="modal">&times;</button>
+					  <h4 class="modal-title">Características do Portal dos Estagiários</h4>
+					</div>
+					<div class="modal-body">
+						<ul>
+							<li  class="caracLista">*Seguro: Usa o sistema de senhas e criptografia!</li>
+							<li  class="caracLista">*Portátil: Acessível de qualquer lugar!</li>
+							<li  class="caracLista">*Grátis: Feito de forma gratuita pelos estágiarios do Turing, 2017.</li>
+						</ul>
+						<br><br>
+					</div>
+					<div class="modal-footer">
+					  <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+					</div>
+				</div>
+			</div>
+		</div>
 	</footer>
+	<script>
+		var myIndex = 0;
+		carousel();
+
+		function carousel() {
+		    var i;
+		    var x = document.getElementsByClassName("mySlides");
+		    for (i = 0; i < x.length; i++) {
+		       x[i].style.display = "none";  
+		    }
+		    myIndex++;
+		    if (myIndex > x.length) {myIndex = 1}    
+		    x[myIndex-1].style.display = "block";  
+		    setTimeout(carousel, 2000); // Change image every 2 seconds
+		}
+	</script>
 </body>
 </html>

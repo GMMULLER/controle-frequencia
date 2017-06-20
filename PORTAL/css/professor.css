@@ -1,0 +1,103 @@
+.arrow-up {
+  width: 0;
+  height: 0;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-bottom: 15px solid #ECF0F1;
+  left: 10%;
+  position: absolute;
+  top: -10px;
+}
+
+
+.controleProfessor{
+	width: 600px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#nomeProfessor{
+	text-align: center;
+}
+
+#nomeAlunos{
+	margin-left: 40px;
+}
+
+.nomeAlunos{
+	list-style-type: armenian;
+	margin-left: 60px;
+}
+
+.nomeAlunos a{
+	color: blue;
+}
+
+.usuario{
+	margin-top: 10px;
+	width: 500px;
+	height: 23px;
+	border-radius: 20px;
+	margin-left: auto;
+	margin-right: auto;
+	color: white;
+	background-color: black;
+}
+
+.tabelaDias{
+	width: 500px;
+	border-radius: 20px;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: #1abc9c;
+	margin-top: 10px;	
+}
+
+.tabelaDias td{
+	padding-left: 30px;
+}
+
+.tituloTabelasHorarios, .tituloTabelasHorarios th{
+	background-color: black;
+	color: white;
+	border-top-right-radius: 10px;
+	border-top-left-radius: 10px;
+	text-align: center;
+}
+
+#recarregarHorarios{
+	padding: 0px;
+}
+
+#respostas{
+	color: black;
+	background-color:lightgray;
+}
+
+.botProfessor{
+	width: 200px;
+	padding-left: auto;
+	padding-right: auto;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: #1abc9c;
+	height: 50px;
+	border-radius: 5px;
+	color: white;
+	font-weight: bold;
+	margin-top: 3px;
+	margin-bottom: 3px;
+}
+
+.lateral{
+	float: left;
+	width: 300px;
+	margin-left: 20px;
+}
+
+.lateral2{
+	float: left;
+	margin-left: 30px;
+	padding: 0px;
+	width: 200px;
+}

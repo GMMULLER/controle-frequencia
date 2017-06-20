@@ -1,0 +1,150 @@
+.caracLista{
+	font-size: 1em;
+	float: left;
+	color: blue;
+	list-style-type: none;
+}
+
+
+#atualizar{
+	margin-top:10px;
+	border-radius:10px;
+}
+.desaparecer{
+	display: none;
+}
+
+
+
+.us1{
+  margin-left: 10px;
+  float: left;
+  width: 300px;
+}
+
+.selection{
+  float: left;
+  width: 170px;
+}
+.selection select, .selection label{
+  margin-top: -20px; 
+  height: 18px;
+}
+
+.metadado{
+	width: 450px;
+	margin-left: 100px;
+}
+
+#wrap {
+  margin: 0 auto 30px;
+}
+#navthing {
+  margin-left: 50px;
+}
+#regbar {
+  height: 67px;
+  background: #34495e;
+}
+
+h2 {
+  padding: 20px;
+  color: #ecf0f1;
+  font-weight:bold;
+}
+
+.green {
+  color: #1abc9c;
+}
+
+
+
+.dadosUsuario{
+  background: #ecf0f1;
+  width: 300px;
+  border-radius: 5px;
+  padding-top: 5px;
+  float: left;
+  margin-left: 75px;
+}
+.usuario{
+  width:200px;
+  color: black; 
+}
+#usuarioInfo1{
+  font-family: open_sansbold,'Open Sans',Arial,Helvetica,sans-serif;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 1.3em;
+  margin-top: 3px;
+}
+.opcoesUsuario{
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  width:200px;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  color: black; 
+}
+.mesHoras{
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+#selecionaMes{
+  float: left;
+  margin-left: 20px;
+}
+#horasTotalDeEstagio{
+  float: left;
+  margin-left: 15px;
+  font-size: 1.2em;
+}
+#atualizarMesAluno{
+  width: 30px;
+  height: 20px;
+  position: relative;
+  top: 3px;
+  margin-left: 3px;
+}
+
+
+.folhaDeEstagio{
+  width: 400px;
+  float: left;
+  border-radius: 5px;
+  padding-top: 5px;
+  float: left;
+  margin-left: 50px; 
+}
+.diaEstagiado{
+  width: 400px;
+  color:white;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;
+  background-color: #1bc6a4;
+  border-radius: 10px;
+}
+.tituloDosDias, .tituloDosDias th{
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  background-color: black;
+  text-align: center;
+}
+.diaEstagiado td{
+  width: 50px;
+}
+.diaEstagiado td:nth-child(2n+1){
+}
+.diaEstagiado td:nth-child(2n){
+}
+.diaEstagiado tr td{
+  padding-left: 40px; 
+}
+
+.horasPorDia td{
+  color: yellow;
+}
