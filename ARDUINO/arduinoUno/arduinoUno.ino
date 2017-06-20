@@ -1,27 +1,24 @@
 #include <Ethernet.h>
 
+//Configurações da rede local e estabelecimento do ip destino
 byte mac[] = { 0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED };
 byte ip[] = { ***, ***, ***, *** };
 byte es[] = { 8, 8, 8, 8 };
 byte gateway[] = { ***, ***, ***, *** };
 byte subnet[] = { 255, 255, 252, 0 };
-byte server[] = { ***, ***, ***, *** }; // Botanicapp
+byte server[] = { ***, ***, ***, *** };
 
 EthernetClient client;
 
 void setup()
 {
   Ethernet.begin(mac, ip, es, gateway, subnet); 
-  //Ethernet.begin(mac, ip);
   Serial.begin(9600);
-  
-  //delay(1000);
 
-  //Serial.println("connecting...");
-  
+  //Verifica se a conexão com o server é possível
   if (client.connect(server, 80)) {
     Serial.println("connected");
-    client.println("GET /cleyton/estagiarios/acesso.php?id=****&cod=**** HTTP/1.0"); //perceptron.php?id=*****
+    client.println("GET /cleyton/estagiarios/acesso.php?id=****&cod=**** HTTP/1.0");
     client.println();
     delay(3000);
   } else {
@@ -33,7 +30,7 @@ void setup()
 
 void loop()
 {
-  
+  //Printando informação recebida do server
   if (client.available()) {
     char c = client.read();
     Serial.print(c);
@@ -47,6 +44,7 @@ void loop()
     //  ;
   }
 
+  //Verifica se está recebendo alguma coisa do Arduino Nano e guarda as informações
   if(Serial.available()>0){
     String a = Serial.readString(); 
     String b = a.substring(0,2);
@@ -59,6 +57,7 @@ void loop()
   
 }
 
+//Envia os dados coletados para o server
 int enviaDado(String id){
   Serial.println("connecting...");
   if (client.connect(server, 80)) {
