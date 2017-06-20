@@ -1,11 +1,11 @@
 #include <Ethernet.h>
 
 byte mac[] = { 0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED };
-byte ip[] = { 192, 168, 40, 3 };
+byte ip[] = { ***, ***, ***, *** };
 byte es[] = { 8, 8, 8, 8 };
-byte gateway[] = { 192, 168, 43, 254 };
+byte gateway[] = { ***, ***, ***, *** };
 byte subnet[] = { 255, 255, 252, 0 };
-byte server[] = { 104, 131, 36, 108 }; // Botanicapp
+byte server[] = { ***, ***, ***, *** }; // Botanicapp
 
 EthernetClient client;
 
@@ -21,7 +21,7 @@ void setup()
   
   if (client.connect(server, 80)) {
     Serial.println("connected");
-    client.println("GET /cleyton/estagiarios/acesso.php?id=1234&cod=159753 HTTP/1.0"); //perceptron.php?id=1234
+    client.println("GET /cleyton/estagiarios/acesso.php?id=****&cod=**** HTTP/1.0"); //perceptron.php?id=*****
     client.println();
     delay(3000);
   } else {
@@ -63,7 +63,7 @@ int enviaDado(String id){
   Serial.println("connecting...");
   if (client.connect(server, 80)) {
     Serial.println("connected");
-    client.println("GET /cleyton/estagiarios/novoAcesso.php?id="+id+"&cod=159753 HTTP/1.0"); //perceptron.php?id=1234
+    client.println("GET /cleyton/estagiarios/novoAcesso.php?id="+id+"&cod=***** HTTP/1.0"); //perceptron.php?id=*****
     client.println();
     client.stop();  
   } else {
